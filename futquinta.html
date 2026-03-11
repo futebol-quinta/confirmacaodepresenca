@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUT 5ª - RESENHA E FUTEBOL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-navy: #102a43;
+            --deep-navy-light: #243b53;
+            --metallic-gold: #c5a059;
+            --warning-red: #d32f2f;
+            --warning-red-dark: #b71c1c;
+            --action-blue: #1976d2;
+            --action-blue-dark: #115293;
+            --text-dark: #1e1e1e;
+            --text-light: #fefefe;
+            --fundo: #f0f2f5;
+            --sober-gray-blue: #bcccdc;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--fundo); color: var(--text-dark); margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
+
+        .header-banner { width: 100%; background-color: var(--deep-navy); padding: 25px 0; text-align: center; border-bottom: 5px solid var(--metallic-gold); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .banner-title-wrapper { display: flex; align-items: center; gap: 15px; }
+        .banner-title-wrapper::before { content: "⚽"; font-size: 2.5em; color: rgba(255,255,255,0.7); }
+        .banner-title-wrapper h1 { font-family: 'Kanit', sans-serif; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-size: 2.2em; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
+        .banner-title-wrapper::after { content: "🏆"; font-size: 2.5em; color: var(--metallic-gold); }
+        .data-jogo-subtitle { color: var(--metallic-gold); font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 1.1em; margin: 5px 0 0 0; letter-spacing: 1px; background: rgba(0,0,0,0.2); padding: 5px 15px; border-radius: 20px; }
+
+        .container { max-width: 1000px; width: 90%; margin-bottom: 40px; }
+
+        /* NOVA CAIXA DE REGRAS OTIMIZADA */
+        .regras-box { background-color: #fefef2; border-left: 8px solid var(--metallic-gold); padding: 25px; margin-bottom: 30px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .regras-box h3 { margin-top: 0; color: var(--deep-navy); font-family: 'Kanit', sans-serif; text-transform: uppercase; font-size: 1.4em; display: flex; align-items: center; gap: 10px; margin-bottom: 15px;}
+        .regras-box h3::after { content: ""; flex-grow: 1; height: 2px; background-color: #eee; }
+        
+        .regras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 768px) { .regras-grid { grid-template-columns: 1fr; } } /* Responsivo para celular */
+        
+        .regra-secao { background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #eee; }
+        .regra-secao h4 { margin: 0 0 10px 0; color: var(--warning-red); font-size: 1.1em; text-transform: uppercase; }
+        .regra-secao h4.financeiro { color: var(--metallic-gold); }
+        .regra-secao ul { margin: 0; padding-left: 20px; font-size: 0.95em; line-height: 1.6; }
+        .regra-secao li { margin-bottom: 8px; }
+        
+        .texto-auxiliar { font-size: 0.85em; color: #666; display: block; margin-top: 5px; line-height: 1.4; }
+        .destaque-pix { background: #e8f5e9; padding: 10px; border-radius: 5px; text-align: center; border: 1px dashed #4caf50; font-weight: bold; color: #2e7d32; margin-top: 15px; font-size: 0.95em;}
+        
+        .sem-misericordia { color: white; background-color: var(--warning-red); padding: 6px 12px; border-radius: 5px; font-weight: bold; display: block; text-align: center; margin-top: 15px; animation: piscar 1.5s infinite; text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px;}
+        @keyframes piscar { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+
+        .form-presenca { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; background: var(--sober-gray-blue); padding: 25px; border-radius: 12px; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .form-presenca input, .form-presenca select { padding: 12px; border: 2px solid #aabacb; border-radius: 6px; flex: 1; min-width: 200px; font-size: 16px; background-color: white; font-family: 'Montserrat', sans-serif; }
+        .form-presenca input:focus, .form-presenca select:focus { outline: none; border-color: var(--metallic-gold); }
+        .form-presenca button { background-color: var(--action-blue); color: white; border: none; padding: 14px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; font-family: 'Montserrat', sans-serif; }
+        .form-presenca button:hover { background-color: var(--action-blue-dark); transform: translateY(-2px); }
+
+        #loading { display: none; text-align: center; color: var(--deep-navy-light); font-weight: bold; margin-bottom: 20px; text-transform: uppercase; font-size: 0.9em;}
+
+        .listas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .lista-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-top: 4px solid var(--deep-navy); }
+        .lista-card h3 { margin-top: 0; color: var(--deep-navy-light); font-family: 'Kanit', sans-serif; text-transform: uppercase; font-size: 1.2em; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 12px; }
+        .lista-card .vagas-counter { font-size: 12px; background: var(--fundo); padding: 4px 10px; border-radius: 20px; color: #666; font-family: 'Montserrat', sans-serif; border: 1px solid #ddd; }
+        .lista-card ol { padding-left: 20px; margin: 0; }
+        .lista-card li { margin-bottom: 10px; padding: 10px; background: var(--fundo); border-radius: 6px; font-weight: 500; border: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center;}
+        
+        .btn-sair { background: none; border: none; cursor: pointer; font-size: 18px; padding: 0 5px; transition: transform 0.2s; }
+        .btn-sair:hover { transform: scale(1.2); }
+
+        .tabela-container { overflow-x: auto; margin-bottom: 20px;}
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
+        th, td { padding: 14px; text-align: center; border-bottom: 1px solid #f0f0f0; }
+        th { background-color: var(--deep-navy); color: white; font-size: 13px; font-family: 'Kanit', sans-serif; text-transform: uppercase; letter-spacing: 1px;}
+        td input { width: 55px; text-align: center; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-weight: bold; font-family: 'Montserrat', sans-serif; font-size: 14px;}
+        td input:focus { outline: none; border-color: var(--metallic-gold); }
+        .nome-tabela { text-align: left; font-weight: bold; color: var(--deep-navy-light); font-size: 15px;}
+        .scout-desc { font-size: 14px; color: #555; text-align: center; margin-top: 0;}
+
+        .btn-salvar-stats { background-color: var(--action-blue); color: white; border: none; padding: 16px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 17px; width: 100%; transition: 0.3s; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .btn-salvar-stats:hover { background-color: var(--action-blue-dark); transform: translateY(-2px); }
+
+        .area-admin { background: #fffcfc; padding: 25px; border-radius: 12px; border: 2px solid #facbca; text-align: center; margin-top: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
+        .area-admin h3 { color: var(--warning-red); margin-top: 0; font-family: 'Kanit', sans-serif; text-transform: uppercase; font-size: 1.3em;}
+        .area-admin p { margin-bottom: 18px; font-size: 14px; color: #666;}
+        .btn-perigo { background-color: var(--warning-red); color: white; border: none; padding: 14px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; text-transform: uppercase; font-family: 'Montserrat', sans-serif;}
+        .btn-perigo:hover { background-color: var(--warning-red-dark); }
+    </style>
+</head>
+<body>
+
+<div class="header-banner">
+    <div class="banner-title-wrapper">
+        <h1>FUT 5ª - RESENHA E FUTEBOL</h1>
+    </div>
+    <p class="data-jogo-subtitle">JOGO DA SEMANA: <span id="data-jogo">--/--/----</span></p>
+</div>
+
+<div class="container">
+
+    <div class="regras-box">
+        <h3>📋 REGRAS E AVISOS DA PELADA</h3>
+        <p style="margin-top: 0; font-weight: bold; color: var(--deep-navy-light);">🕒 HORÁRIO: 19H as 20H</p>
+        
+        <div class="regras-grid">
+            <div class="regra-secao">
+                <h4>⚠️ Infrações e Multas</h4>
+                <ul>
+                    <li>Atrasos (5min+): <strong>R$ 5,00</strong></li>
+                    <li>Sair antes do fim: <strong>R$ 5,00</strong></li>
+                    <li>Confirmar e faltar: <strong>R$ 10,00</strong></li>
+                </ul>
+                <span class="texto-auxiliar">A multa deve ser paga até a <strong>quarta-feira seguinte</strong> da infração. Caso não seja paga, o jogador <strong>sairá da lista</strong> até a regularização.</span>
+                <div class="sem-misericordia">Não haverá MISERICÓRDIA !!!!</div>
+            </div>
+
+            <div class="regra-secao">
+                <h4 class="financeiro">💰 Valores e Prazos</h4>
+                <ul>
+                    <li><strong>👑 Mensalistas: R$ 60,00</strong>
+                        <span class="texto-auxiliar">Vencimento todo dia 10 (multa de R$ 5,00 p/ atrasos).<br>Prioridade na lista até <strong>Terça-feira 23:59</strong>.</span>
+                    </li>
+                    <li style="margin-top: 10px;"><strong>🏃 Avulsos: R$ 20,00</strong></li>
+                </ul>
+                <div class="destaque-pix">
+                    PIX (E-MAIL)<br>
+                    <span style="font-weight: normal; color: #333;">matheuszampieri14@hotmail.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-presenca">
+        <input type="text" id="nomeJogador" placeholder="Digite seu nome..." autocomplete="off">
+        <select id="tipoJogador">
+            <option value="Mensalista">Mensalista (Linha)</option>
+            <option value="Avulso">Avulso (Linha)</option>
+            <option value="Goleiro">Goleiro</option>
+        </select>
+        <button id="btnConfirmar" onclick="confirmarPresenca()">✅ CONFIRMAR PRESENÇA</button>
+    </div>
+
+    <div id="loading">🔄 Carregando dados da pelada...</div>
+
+    <div class="listas-grid">
+        <div class="lista-card">
+            <h3>👑 MENSALISTAS <span class="vagas-counter"><span id="contador-mensalistas">0</span>/18 VAGAS</span></h3>
+            <ol id="lista-mensalistas"></ol>
+        </div>
+        <div class="lista-card">
+            <h3>🏃 AVULSOS</h3>
+            <ol id="lista-avulsos"></ol>
+        </div>
+        <div class="lista-card">
+            <h3>🧤 GOLEIROS</h3>
+            <ol id="lista-goleiros"></ol>
+        </div>
+    </div>
+
+    <h2 style="color: var(--deep-navy); border-bottom: 2px solid #eee; padding-bottom: 12px; font-family: 'Kanit', sans-serif; text-transform: uppercase;">📊 CONTROLE DE ESTATÍSTICAS (PÓS-JOGO)</h2>
+    <p class="scout-desc">Preencha os seus scouts da partida e clique no botão azul abaixo da tabela para salvar.</p>
+    
+    <div class="tabela-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>JOGADOR</th>
+                    <th>CATEGORIA</th>
+                    <th>GOLS ⚽</th>
+                    <th>ASSIST. 👟</th>
+                    <th>DEF. DIFÍCEIS 🧤</th>
+                    <th>VITÓRIAS 🏆</th>
+                    <th>EMPATES ➖</th>
+                    <th>DERROTAS ❌</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-stats-body"></tbody>
+        </table>
+    </div>
+
+    <button class="btn-salvar-stats" id="btnSalvarStats" onclick="salvarEstatisticas()">💾 SALVAR MINHAS ESTATÍSTICAS</button>
+
+    <div class="area-admin">
+        <h3>⚙️ ÁREA DA ORGANIZAÇÃO</h3>
+        <p>Utilize apenas após o jogo para preparar a lista da próxima semana.</p>
+        <button class="btn-perigo" id="btnLimpar" onclick="limparListaCompleta()">🗑️ ZERAR LISTA PARA O PRÓXIMO JOGO</button>
+    </div>
+
+</div>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwFHkHRP3w-no42PGPNI-1HQ51bZjw3g2BlC0uRmqDnYswGmgOCk1pFLJTq1zlaRl3L5Q/exec';
+    let jogadoresRenderizados = [];
+    let totalMensalistas = 0;
+
+    window.onload = function() {
+        calcularProximaQuinta();
+        buscarDadosDaPlanilha();
+    }
+
+    function calcularProximaQuinta() {
+        const hoje = new Date();
+        const diaSemana = hoje.getDay();
+        const hora = hoje.getHours();
+        
+        let diasParaQuinta = (4 - diaSemana + 7) % 7;
+        
+        if (diasParaQuinta === 0 && hora >= 21) {
+            diasParaQuinta = 7;
+        }
+        
+        const proximaQuinta = new Date(hoje);
+        proximaQuinta.setDate(hoje.getDate() + diasParaQuinta);
+        
+        const dia = String(proximaQuinta.getDate()).padStart(2, '0');
+        const mes = String(proximaQuinta.getMonth() + 1).padStart(2, '0');
+        const ano = proximaQuinta.getFullYear();
+        
+        document.getElementById('data-jogo').innerText = `${dia}/${mes}/${ano}`;
+    }
+
+    function adicionarNaTela(nome, categoria, gols = 0, assist = 0, defesas = 0, vit = 0, emp = 0, der = 0) {
+        if (jogadoresRenderizados.includes(nome.toLowerCase())) return;
+        jogadoresRenderizados.push(nome.toLowerCase());
+
+        let listaId = '';
+        if (categoria === 'Mensalista') {
+            listaId = 'lista-mensalistas';
+            totalMensalistas++;
+            document.getElementById('contador-mensalistas').innerText = totalMensalistas;
+        }
+        else if (categoria === 'Avulso') listaId = 'lista-avulsos';
+        else if (categoria === 'Goleiro') listaId = 'lista-goleiros';
+
+        if(listaId) {
+            const ul = document.getElementById(listaId);
+            const li = document.createElement('li');
+            li.innerHTML = `<span>${nome}</span> <button class="btn-sair" onclick="sairDaLista('${nome}', '${categoria}', this)" title="Sair do Jogo">🏃‍♂️💨</button>`;
+            ul.appendChild(li);
+        }
+
+        const tbody = document.getElementById('tabela-stats-body');
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td class="nome-tabela">${nome}</td>
+            <td style="font-size: 13px; color: #666;">${categoria}</td>
+            <td><input type="number" class="ipt-gol" value="${gols}" min="0"></td>
+            <td><input type="number" class="ipt-ast" value="${assist}" min="0"></td>
+            <td><input type="number" class="ipt-def" value="${defesas}" min="0" ${categoria !== 'Goleiro' ? 'disabled style="background:#eee;"' : ''}></td>
+            <td><input type="number" class="ipt-vit" value="${vit}" min="0"></td>
+            <td><input type="number" class="ipt-emp" value="${emp}" min="0"></td>
+            <td><input type="number" class="ipt-der" value="${der}" min="0"></td>
+        `;
+        tbody.appendChild(tr);
+    }
+
+    async function buscarDadosDaPlanilha() {
+        document.getElementById('loading').style.display = 'block';
+        try {
+            const response = await fetch(scriptURL);
+            const dados = await response.json();
+            
+            dados.forEach(linha => {
+                if(linha[1] && linha[2]) { 
+                    adicionarNaTela(linha[1], linha[2], linha[4]||0, linha[5]||0, linha[6]||0, linha[7]||0, linha[8]||0, linha[9]||0);
+                }
+            });
+        } catch (error) {
+            console.log("Planilha vazia ou erro na busca.");
+        }
+        document.getElementById('loading').style.display = 'none';
+    }
+
+    function confirmarPresenca() {
+        const nomeInput = document.getElementById('nomeJogador');
+        const tipoSelect = document.getElementById('tipoJogador');
+        const btn = document.getElementById('btnConfirmar');
+        const nome = nomeInput.value.trim();
+        const categoria = tipoSelect.value;
+
+        if (!nome) { alert('Digite o nome do jogador antes de confirmar.'); return; }
+        if (categoria === 'Mensalista' && totalMensalistas >= 18) { alert('🚫 Lotação Máxima! A lista de mensalistas já atingiu o limite de 18.'); return; }
+
+        btn.innerHTML = '⏳ SALVANDO...'; btn.disabled = true;
+
+        const formData = new URLSearchParams();
+        formData.append('nome', nome); formData.append('categoria', categoria);
+
+        fetch(scriptURL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: formData
+        }).then(() => {
+            adicionarNaTela(nome, categoria);
+            nomeInput.value = '';
+            btn.innerHTML = '✅ CONFIRMAR PRESENÇA'; btn.disabled = false;
+        }).catch(() => {
+            alert('Erro na conexão. Tente novamente.');
+            btn.innerHTML = '✅ CONFIRMAR PRESENÇA'; btn.disabled = false;
+        });
+    }
+
+    function sairDaLista(nome, categoria, botaoElemento) {
+        const confirmacao = confirm(`⚠️ ${nome}, tem certeza que deseja SAIR da lista?\n\nLembre-se da regra de multa caso esteja cancelando de última hora!`);
+        
+        if (confirmacao) {
+            botaoElemento.innerHTML = '⏳';
+            botaoElemento.disabled = true;
+
+            const formData = new URLSearchParams();
+            formData.append('acao', 'remover_jogador');
+            formData.append('nome', nome);
+
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData
+            }).then(() => {
+                botaoElemento.closest('li').remove();
+                const linhasTabela = document.querySelectorAll('#tabela-stats-body tr');
+                linhasTabela.forEach(tr => {
+                    if(tr.querySelector('.nome-tabela').innerText === nome) { tr.remove(); }
+                });
+
+                jogadoresRenderizados = jogadoresRenderizados.filter(j => j !== nome.toLowerCase());
+                if (categoria === 'Mensalista') {
+                    totalMensalistas--;
+                    document.getElementById('contador-mensalistas').innerText = totalMensalistas;
+                }
+
+                alert(`O jogador ${nome} foi removido da partida.`);
+            }).catch(error => {
+                alert('Erro ao tentar sair da lista. Tente novamente.');
+                botaoElemento.innerHTML = '🏃‍♂️💨';
+                botaoElemento.disabled = false;
+            });
+        }
+    }
+
+    function salvarEstatisticas() {
+        const btn = document.getElementById('btnSalvarStats');
+        btn.innerHTML = '⏳ SALVANDO ESTATÍSTICAS...';
+        btn.disabled = true;
+
+        const tbody = document.getElementById('tabela-stats-body');
+        const linhas = tbody.getElementsByTagName('tr');
+        let statsArray = [];
+
+        for (let i = 0; i < linhas.length; i++) {
+            let tr = linhas[i];
+            let nome = tr.querySelector('.nome-tabela').innerText;
+            statsArray.push({
+                nome: nome,
+                gols: tr.querySelector('.ipt-gol').value || 0,
+                assist: tr.querySelector('.ipt-ast').value || 0,
+                defesas: tr.querySelector('.ipt-def').value || 0,
+                vitorias: tr.querySelector('.ipt-vit').value || 0,
+                empates: tr.querySelector('.ipt-emp').value || 0,
+                derrotas: tr.querySelector('.ipt-der').value || 0
+            });
+        }
+
+        const formData = new URLSearchParams();
+        formData.append('acao', 'salvar_stats');
+        formData.append('stats', JSON.stringify(statsArray));
+
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: formData
+        }).then(() => {
+            alert('🏆 Scouts atualizados com sucesso!');
+            btn.innerHTML = '💾 SALVAR MINHAS ESTATÍSTICAS';
+            btn.disabled = false;
+        }).catch(error => {
+            alert('Erro ao salvar os scouts.');
+            btn.innerHTML = '💾 SALVAR MINHAS ESTATÍSTICAS';
+            btn.disabled = false;
+        });
+    }
+
+    function limparListaCompleta() {
+        const confirmacao = confirm("⚠️ ATENÇÃO! Você tem certeza que deseja ZERAR toda a lista e a planilha para o próximo jogo?");
+        if (confirmacao) {
+            const btnLimpar = document.getElementById('btnLimpar');
+            btnLimpar.innerHTML = '⏳ APAGANDO...'; btnLimpar.disabled = true;
+            const formData = new URLSearchParams(); formData.append('acao', 'limpar');
+
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: formData
+            }).then(() => { alert('Lista zerada com sucesso!'); window.location.reload();
+            }).catch(() => { alert('Erro ao limpar a lista.'); btnLimpar.innerHTML = '🗑️ ZERAR LISTA PARA O PRÓXIMO JOGO'; btnLimpar.disabled = false; });
+        }
+    }
+</script>
+
+</body>
+</html>
