@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FUT 5ª - RESENHA E FUTEBOL</title>
+    
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -23,21 +26,22 @@
         body { font-family: 'Montserrat', sans-serif; background-color: var(--fundo); color: var(--text-dark); margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
 
         .header-banner { width: 100%; background-color: var(--deep-navy); padding: 25px 0; text-align: center; border-bottom: 5px solid var(--metallic-gold); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        
+        /* ESTILO DA LOGO NO BANNER */
+        .header-logo { max-width: 140px; height: auto; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); margin-bottom: 10px; }
+        
         .banner-title-wrapper { display: flex; align-items: center; gap: 15px; }
-        .banner-title-wrapper::before { content: "⚽"; font-size: 2.5em; color: rgba(255,255,255,0.7); }
         .banner-title-wrapper h1 { font-family: 'Kanit', sans-serif; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-size: 2.2em; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
-        .banner-title-wrapper::after { content: "🏆"; font-size: 2.5em; color: var(--metallic-gold); }
         .data-jogo-subtitle { color: var(--metallic-gold); font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 1.1em; margin: 5px 0 0 0; letter-spacing: 1px; background: rgba(0,0,0,0.2); padding: 5px 15px; border-radius: 20px; }
 
         .container { max-width: 1000px; width: 90%; margin-bottom: 40px; }
 
-        /* NOVA CAIXA DE REGRAS OTIMIZADA */
         .regras-box { background-color: #fefef2; border-left: 8px solid var(--metallic-gold); padding: 25px; margin-bottom: 30px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .regras-box h3 { margin-top: 0; color: var(--deep-navy); font-family: 'Kanit', sans-serif; text-transform: uppercase; font-size: 1.4em; display: flex; align-items: center; gap: 10px; margin-bottom: 15px;}
         .regras-box h3::after { content: ""; flex-grow: 1; height: 2px; background-color: #eee; }
         
         .regras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        @media (max-width: 768px) { .regras-grid { grid-template-columns: 1fr; } } /* Responsivo para celular */
+        @media (max-width: 768px) { .regras-grid { grid-template-columns: 1fr; } } 
         
         .regra-secao { background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #eee; }
         .regra-secao h4 { margin: 0 0 10px 0; color: var(--warning-red); font-size: 1.1em; text-transform: uppercase; }
@@ -91,6 +95,8 @@
 <body>
 
 <div class="header-banner">
+    <img src="logo.jpg" alt="Logo FUT 5ª" class="header-logo">
+    
     <div class="banner-title-wrapper">
         <h1>FUT 5ª - RESENHA E FUTEBOL</h1>
     </div>
