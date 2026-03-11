@@ -10,363 +10,282 @@
         :root {
             --deep-navy: #102a43; --deep-navy-light: #243b53;
             --metallic-gold: #c5a059;
-            --warning-red: #d32f2f; --warning-red-dark: #b71c1c;
-            --action-blue: #1976d2; --action-blue-dark: #115293;
+            --warning-red: #d32f2f;
+            --action-blue: #1976d2;
             --text-dark: #1e1e1e; --text-light: #fefefe;
             --fundo: #f0f2f5; --sober-gray-blue: #bcccdc;
-            /* CORES DAS CATEGORIAS */
-            --bg-mensalista: #d4edda; /* Verde Claro */
-            --bg-avulso: #d1ecf1;      /* Azul Claro */
-            --bg-goleiro: #ffe5d0;     /* Laranja Claro */
+            --bg-mensalista: #d4edda; --bg-avulso: #d1ecf1; --bg-goleiro: #ffe5d0;
         }
 
         body { font-family: 'Montserrat', sans-serif; background-color: var(--fundo); color: var(--text-dark); margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
 
-        .header-banner { width: 100%; background-color: var(--deep-navy); padding: 25px 0; text-align: center; border-bottom: 5px solid var(--metallic-gold); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
-        .header-logo { max-width: 140px; height: auto; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); margin-bottom: 10px; }
-        .banner-title-wrapper { display: flex; align-items: center; gap: 15px; }
-        .banner-title-wrapper h1 { font-family: 'Kanit', sans-serif; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-size: 2.2em; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
-        .data-jogo-subtitle { color: var(--metallic-gold); font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 1.1em; margin: 5px 0 0 0; letter-spacing: 1px; background: rgba(0,0,0,0.2); padding: 5px 15px; border-radius: 20px; }
+        .header-banner { width: 100%; background-color: var(--deep-navy); padding: 25px 0; text-align: center; border-bottom: 5px solid var(--metallic-gold); margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .header-logo { max-width: 140px; border-radius: 15px; margin-bottom: 10px; }
+        .banner-title-wrapper h1 { font-family: 'Kanit', sans-serif; color: var(--text-light); text-transform: uppercase; margin: 0; font-size: 2.2em; }
+        .data-jogo-subtitle { color: var(--metallic-gold); font-weight: bold; font-size: 1.1em; margin-top: 5px; }
 
         .container { max-width: 1000px; width: 90%; margin-bottom: 40px; }
 
-        .regras-box { background-color: #fefef2; border-left: 8px solid var(--metallic-gold); padding: 25px; margin-bottom: 30px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .regras-box h3 { margin-top: 0; color: var(--deep-navy); font-family: 'Kanit', sans-serif; text-transform: uppercase; font-size: 1.4em; display: flex; align-items: center; gap: 10px; margin-bottom: 15px;}
-        .regras-box h3::after { content: ""; flex-grow: 1; height: 2px; background-color: #eee; }
-        .regras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        @media (max-width: 768px) { .regras-grid { grid-template-columns: 1fr; } } 
-        .regra-secao { background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #eee; }
-        .regra-secao h4 { margin: 0 0 10px 0; color: var(--warning-red); font-size: 1.1em; text-transform: uppercase; }
-        .regra-secao h4.financeiro { color: var(--metallic-gold); }
-        .regra-secao ul { margin: 0; padding-left: 20px; font-size: 0.95em; line-height: 1.6; }
-        .regra-secao li { margin-bottom: 8px; }
-        .texto-auxiliar { font-size: 0.85em; color: #666; display: block; margin-top: 5px; line-height: 1.4; }
-        .destaque-pix { background: #e8f5e9; padding: 10px; border-radius: 5px; text-align: center; border: 1px dashed #4caf50; font-weight: bold; color: #2e7d32; margin-top: 15px; font-size: 0.95em;}
-        .sem-misericordia { color: white; background-color: var(--warning-red); padding: 6px 12px; border-radius: 5px; font-weight: bold; display: block; text-align: center; margin-top: 15px; animation: piscar 1.5s infinite; text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px;}
+        /* NOVA SEÇÃO DE CADASTRO */
+        .box-cadastro { background: white; padding: 20px; border-radius: 12px; border: 2px dashed var(--sober-gray-blue); margin-bottom: 20px; text-align: center; }
+        .box-cadastro h3 { margin-top: 0; color: var(--deep-navy); font-family: 'Kanit'; font-size: 1.1em; text-transform: uppercase; }
+        .inputs-cadastro { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+        .inputs-cadastro input, .inputs-cadastro select { padding: 12px; border: 1px solid #ccc; border-radius: 6px; }
+        .btn-cadastrar { background-color: var(--deep-navy-light); color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
+        .btn-cadastrar:hover { background-color: var(--metallic-gold); }
 
+        /* FORMULÁRIO DE PRESENÇA */
         .form-presenca { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; background: var(--sober-gray-blue); padding: 25px; border-radius: 12px; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .form-presenca input, .form-presenca select { padding: 12px; border: 2px solid #aabacb; border-radius: 6px; flex: 1; min-width: 200px; font-size: 16px; background-color: white; font-family: 'Montserrat', sans-serif; }
-        .form-presenca button { background-color: var(--action-blue); color: white; border: none; padding: 14px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; font-family: 'Montserrat', sans-serif; }
+        .form-presenca select { padding: 12px; border: 2px solid #aabacb; border-radius: 6px; flex: 2; min-width: 200px; font-size: 16px; background-color: white; font-family: 'Montserrat', sans-serif; }
+        .form-presenca button { background-color: #2e7d32; color: white; border: none; padding: 14px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; text-transform: uppercase; flex: 1; }
 
-        #loading { display: none; text-align: center; color: var(--deep-navy-light); font-weight: bold; margin-bottom: 20px; text-transform: uppercase; font-size: 0.9em;}
+        #loading { display: none; text-align: center; color: var(--deep-navy); font-weight: bold; margin-bottom: 20px; }
 
         .listas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
         .lista-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-top: 4px solid var(--deep-navy); }
-        .lista-card h3 { margin-top: 0; color: var(--deep-navy-light); font-family: 'Kanit', sans-serif; text-transform: uppercase; font-size: 1.2em; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 12px; }
-        .lista-card .vagas-counter { font-size: 12px; background: var(--fundo); padding: 4px 10px; border-radius: 20px; color: #666; font-family: 'Montserrat', sans-serif; border: 1px solid #ddd; }
+        .lista-card h3 { margin-top: 0; color: var(--deep-navy-light); font-family: 'Kanit', sans-serif; text-transform: uppercase; font-size: 1.2em; border-bottom: 2px solid #eee; padding-bottom: 12px; display: flex; justify-content: space-between; }
         .lista-card ol { padding-left: 20px; margin: 0; }
-        
-        /* CORES NOS NOMES DAS LISTAS */
         .lista-card li { margin-bottom: 10px; padding: 10px; border-radius: 6px; font-weight: 600; border: 1px solid #d1d1d1; display: flex; justify-content: space-between; align-items: center;}
-        .bg-mensalista-item { background-color: var(--bg-mensalista); border-color: #c3e6cb !important; }
-        .bg-avulso-item { background-color: var(--bg-avulso); border-color: #bee5eb !important; }
-        .bg-goleiro-item { background-color: var(--bg-goleiro); border-color: #f5d6bc !important; }
+        
+        .bg-mensalista-item { background-color: var(--bg-mensalista); }
+        .bg-avulso-item { background-color: var(--bg-avulso); }
+        .bg-goleiro-item { background-color: var(--bg-goleiro); }
 
-        .btn-sair { background: none; border: none; cursor: pointer; font-size: 18px; padding: 0 5px; transition: transform 0.2s; }
+        .btn-sair { background: none; border: none; cursor: pointer; font-size: 18px; }
 
         .tabela-container { overflow-x: auto; margin-bottom: 20px;}
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
-        th, td { padding: 14px; text-align: center; border-bottom: 1px solid #f0f0f0; }
-        th { background-color: var(--deep-navy); color: white; font-size: 13px; font-family: 'Kanit', sans-serif; text-transform: uppercase; letter-spacing: 1px;}
-        td input { width: 55px; text-align: center; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-weight: bold; font-family: 'Montserrat', sans-serif; font-size: 14px;}
-        .nome-tabela { text-align: left; font-weight: bold; color: var(--deep-navy-light); font-size: 15px;}
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; }
+        th { background-color: var(--deep-navy); color: white; padding: 12px; font-size: 12px; text-transform: uppercase; }
+        td { padding: 10px; text-align: center; border-bottom: 1px solid #f0f0f0; }
+        td input { width: 50px; text-align: center; padding: 5px; }
 
-        .btn-salvar-stats { background-color: var(--action-blue); color: white; border: none; padding: 16px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 17px; width: 100%; transition: 0.3s; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
-
-        .area-admin { background: #fffcfc; padding: 25px; border-radius: 12px; border: 2px solid #facbca; text-align: center; margin-top: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
-        .btn-perigo { background-color: var(--warning-red); color: white; border: none; padding: 14px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; text-transform: uppercase; font-family: 'Montserrat', sans-serif;}
-        
-        select:disabled { background-color: #e9ecef !important; color: #495057; cursor: not-allowed; font-weight: bold;}
+        .area-admin { background: #fff4f4; padding: 25px; border-radius: 12px; border: 2px solid #facbca; text-align: center; margin-top: 20px; }
+        .btn-perigo { background-color: var(--warning-red); color: white; border: none; padding: 14px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
 <div class="header-banner">
-    <img src="logo.png" alt="Logo FUT 5ª" class="header-logo">
-    <div class="banner-title-wrapper">
-        <h1>FUT 5ª - RESENHA E FUTEBOL</h1>
-    </div>
+    <img src="logo.png" alt="Logo" class="header-logo">
+    <div class="banner-title-wrapper"><h1>FUT 5ª - RESENHA E FUTEBOL</h1></div>
     <p class="data-jogo-subtitle">JOGO DA SEMANA: <span id="data-jogo">--/--/----</span></p>
 </div>
 
 <div class="container">
 
-    <div class="regras-box">
-        <h3>📋 REGRAS E AVISOS DA PELADA</h3>
-        <p style="margin-top: 0; font-weight: bold; color: var(--deep-navy-light);">🕒 HORÁRIO: 19H as 20H</p>
-        
-        <div class="regras-grid">
-            <div class="regra-secao">
-                <h4>⚠️ Infrações e Multas</h4>
-                <ul>
-                    <li>Atrasos (5min+): <strong>R$ 5,00</strong></li>
-                    <li>Sair antes do fim: <strong>R$ 5,00</strong></li>
-                    <li>Confirmar e faltar: <strong>R$ 10,00</strong></li>
-                </ul>
-            </div>
-
-            <div class="regra-secao">
-                <h4 class="financeiro">💰 Valores e Prazos</h4>
-                <ul>
-                    <li><strong>👑 Mensalistas: R$ 60,00</strong></li>
-                    <li><strong>🏃 Avulsos: R$ 20,00</strong></li>
-                </ul>
-                <div class="destaque-pix">
-                    PIX: matheuszampieri14@hotmail.com
-                </div>
-            </div>
+    <div class="box-cadastro">
+        <h3>✨ NOVO CONVIDADO? CADASTRE SEU NOME</h3>
+        <p style="font-size: 12px; color: #666; margin-top: 0;">Cadastre-se uma vez para aparecer na lista de seleção abaixo.</p>
+        <div class="inputs-cadastro">
+            <input type="text" id="cadNome" placeholder="Nome Completo">
+            <select id="cadTipo">
+                <option value="Avulso">🏃 Avulso</option>
+                <option value="Goleiro">🧤 Goleiro</option>
+            </select>
+            <button class="btn-cadastrar" onclick="cadastrarNaPlataforma()">GRAVAR NOME</button>
         </div>
     </div>
 
     <div class="form-presenca">
-        <select id="selectNomeJogador" onchange="aoSelecionarNome()">
-            <option value="">👤 Selecione o seu nome...</option>
+        <select id="selectNomes">
+            <option value="">🔄 Carregando elenco...</option>
         </select>
-        <input type="text" id="nomeJogadorExtra" placeholder="Digite o nome do convidado..." style="display: none;" autocomplete="off">
-        <select id="tipoJogador" disabled>
-            <option value="Mensalista">👑 Mensalista</option>
-            <option value="Avulso">🏃 Avulso</option>
-            <option value="Goleiro">🧤 Goleiro</option>
-        </select>
-        <button id="btnConfirmar" onclick="confirmarPresenca()">✅ CONFIRMAR PRESENÇA</button>
+        <button id="btnConfirmar" onclick="confirmarNoJogo()">✅ CONFIRMAR PRESENÇA NO JOGO</button>
     </div>
 
-    <div id="loading">🔄 Carregando dados...</div>
+    <div id="loading">🔄 Sincronizando dados...</div>
 
     <div class="listas-grid">
         <div class="lista-card">
-            <h3>👑 MENSALISTAS <span class="vagas-counter"><span id="contador-mensalistas">0</span>/18 VAGAS</span></h3>
-            <ol id="lista-mensalistas"></ol>
+            <h3>👑 MENSALISTAS <span style="font-size: 0.7em;" id="cont-m">0/18</span></h3>
+            <ol id="l-mensalistas"></ol>
         </div>
         <div class="lista-card">
             <h3>🏃 AVULSOS</h3>
-            <ol id="lista-avulsos"></ol>
+            <ol id="l-avulsos"></ol>
         </div>
         <div class="lista-card">
             <h3>🧤 GOLEIROS</h3>
-            <ol id="lista-goleiros"></ol>
+            <ol id="l-goleiros"></ol>
         </div>
     </div>
 
-    <h2 style="color: var(--deep-navy); font-family: 'Kanit', sans-serif; text-transform: uppercase; border-bottom: 2px solid #eee; padding-bottom: 10px;">📊 ESTATÍSTICAS</h2>
-    
+    <h2 style="font-family: 'Kanit'; text-transform: uppercase; font-size: 1.2em; color: var(--deep-navy);">📊 SCOUT DA RODADA</h2>
     <div class="tabela-container">
         <table>
             <thead>
                 <tr>
                     <th>JOGADOR</th>
-                    <th>CAT.</th>
-                    <th>GOLS ⚽</th>
-                    <th>AST. 👟</th>
-                    <th>DEF. 🧤</th>
-                    <th>VIT. 🏆</th>
-                    <th>EMP. ➖</th>
-                    <th>DER. ❌</th>
+                    <th>GOLS</th>
+                    <th>AST.</th>
+                    <th>DEF.</th>
+                    <th>VIT.</th>
                 </tr>
             </thead>
             <tbody id="tabela-stats-body"></tbody>
         </table>
     </div>
-
-    <button class="btn-salvar-stats" id="btnSalvarStats" onclick="salvarEstatisticas()">💾 SALVAR MINHAS ESTATÍSTICAS (RESTRITO)</button>
+    <button style="width:100%; padding:15px; margin-top:10px; background:var(--action-blue); color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="salvarEstatisticas()">💾 SALVAR ESTATÍSTICAS (RESTRITO)</button>
 
     <div class="area-admin">
-        <h3 style="color: var(--warning-red); font-family: 'Kanit';">⚙️ ÁREA DA DIRETORIA</h3>
-        <button class="btn-perigo" id="btnLimpar" onclick="limparListaCompleta()">🗑️ ZERAR LISTA (RESTRITO)</button>
+        <h3 style="color: var(--warning-red); margin-top:0;">⚙️ DIRETORIA</h3>
+        <button class="btn-perigo" onclick="limparListaCompleta()">🗑️ ZERAR LISTA DA SEMANA</button>
     </div>
-
 </div>
 
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwFHkHRP3w-no42PGPNI-1HQ51bZjw3g2BlC0uRmqDnYswGmgOCk1pFLJTq1zlaRl3L5Q/exec';
-    
-    // ==========================================
-    // CONFIGURAÇÃO DE ACESSO
-    // ==========================================
-    const SENHA_ADMIN = '2016'; // <--- Altere sua senha aqui!
+    // --- INSIRA SEU LINK DO GOOGLE SCRIPT AQUI ---
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwFHkHRP3w-no42PGPNI-1HQ51bZjw3g2BlC0uRmqDnYswGmgOCk1pFLJTq1zlaRl3L5Q/exec'; 
+    const SENHA_ADMIN = '1234';
 
-    let jogadoresRenderizados = [];
-    let totalMensalistas = 0;
+    // MENSALISTAS FIXOS (ESTES SEMPRE APARECEM NO SELECT)
+    const mensalistasFixo = [
+        "FAYAD", "CABEÇA", "CKI", "DIGO", "OREIA", "VALDIR", "GERAGE", "WILLIAN", 
+        "SAULO", "RICA (BACCARIN)", "LH", "LUCIANO", "TREVELIN", "GUIMA", 
+        "BAMBI", "KÇA", "JOAO BARRIGA"
+    ].map(n => ({ nome: n, tipo: 'Mensalista' }));
 
-    const elencoOficial = [
-        { nome: 'Fayad', tipo: 'Mensalista' }, { nome: 'Cabeça', tipo: 'Mensalista' },
-        { nome: 'Cki', tipo: 'Mensalista' }, { nome: 'Digo', tipo: 'Mensalista' },
-        { nome: 'Oreia', tipo: 'Mensalista' }, { nome: 'Valdir', tipo: 'Mensalista' },
-        { nome: 'Gerage', tipo: 'Mensalista' }, { nome: 'Willian', tipo: 'Mensalista' },
-        { nome: 'Saulo', tipo: 'Mensalista' }, { nome: 'Rica (Baccarin)', tipo: 'Mensalista' },
-        { nome: 'Lh', tipo: 'Mensalista' }, { nome: 'Luciano Aversa', tipo: 'Mensalista' },
-        { nome: 'Trevelin', tipo: 'Mensalista' }, { nome: 'Guima', tipo: 'Mensalista' },
-        { nome: 'Bambi', tipo: 'Mensalista' }, { nome: 'Kça', tipo: 'Mensalista' },
-        { nome: 'Joao Barriga', tipo: 'Mensalista' }, { nome: 'Fabião', tipo: 'Avulso' },
-        { nome: 'André', tipo: 'Avulso' }, { nome: 'Giovanni', tipo: 'Avulso' },
-        { nome: 'Maia', tipo: 'Avulso' }, { nome: 'Enrico', tipo: 'Avulso' },
-        { nome: 'Luciano', tipo: 'Goleiro' }, { nome: 'Alex', tipo: 'Goleiro' }
-    ];
+    let jogadoresPlanilha = [];
 
-    window.onload = function() {
-        calcularProximaQuinta();
-        montarListaSuspensa();
-        buscarDadosDaPlanilha();
-    }
+    window.onload = () => {
+        atualizarData();
+        puxarDados();
+    };
 
-    function montarListaSuspensa() {
-        const select = document.getElementById('selectNomeJogador');
-        elencoOficial.sort((a, b) => a.nome.localeCompare(b.nome));
-        elencoOficial.forEach(jogador => {
-            let option = document.createElement('option');
-            option.value = jogador.nome;
-            option.text = jogador.nome;
-            option.dataset.categoria = jogador.tipo; 
-            select.appendChild(option);
-        });
-        let optionOutro = document.createElement('option');
-        optionOutro.value = 'OUTRO';
-        optionOutro.text = '➕ Convidado / Novo Jogador';
-        select.appendChild(optionOutro);
-    }
-
-    function aoSelecionarNome() {
-        const selectNome = document.getElementById('selectNomeJogador');
-        const inputExtra = document.getElementById('nomeJogadorExtra');
-        const selectTipo = document.getElementById('tipoJogador');
-
-        if (selectNome.value === 'OUTRO') {
-            inputExtra.style.display = 'block';
-            selectTipo.value = 'Avulso';
-            inputExtra.focus();
-        } else if (selectNome.value !== '') {
-            inputExtra.style.display = 'none';
-            const opcaoSelecionada = selectNome.options[selectNome.selectedIndex];
-            selectTipo.value = opcaoSelecionada.dataset.categoria;
-        } else {
-            inputExtra.style.display = 'none';
-        }
-    }
-
-    function calcularProximaQuinta() {
-        const hoje = new Date();
-        const diaSemana = hoje.getDay();
-        const hora = hoje.getHours();
-        let diasParaQuinta = (4 - diaSemana + 7) % 7;
-        if (diasParaQuinta === 0 && hora >= 21) diasParaQuinta = 7;
-        const proximaQuinta = new Date(hoje);
-        proximaQuinta.setDate(hoje.getDate() + diasParaQuinta);
-        const dia = String(proximaQuinta.getDate()).padStart(2, '0');
-        const mes = String(proximaQuinta.getMonth() + 1).padStart(2, '0');
-        document.getElementById('data-jogo').innerText = `${dia}/${mes}/${proximaQuinta.getFullYear()}`;
-    }
-
-    function adicionarNaTela(nome, categoria, gols = 0, assist = 0, defesas = 0, vit = 0, emp = 0, der = 0) {
-        if (jogadoresRenderizados.includes(nome.toLowerCase())) return;
-        jogadoresRenderizados.push(nome.toLowerCase());
-
-        let listaId = '';
-        let classeCor = '';
-        if (categoria === 'Mensalista') {
-            listaId = 'lista-mensalistas';
-            classeCor = 'bg-mensalista-item';
-            totalMensalistas++;
-            document.getElementById('contador-mensalistas').innerText = totalMensalistas;
-        }
-        else if (categoria === 'Avulso') {
-            listaId = 'lista-avulsos';
-            classeCor = 'bg-avulso-item';
-        }
-        else if (categoria === 'Goleiro') {
-            listaId = 'lista-goleiros';
-            classeCor = 'bg-goleiro-item';
-        }
-
-        if(listaId) {
-            const ul = document.getElementById(listaId);
-            const li = document.createElement('li');
-            li.className = classeCor;
-            li.innerHTML = `<span>${nome}</span> <button class="btn-sair" onclick="sairDaLista('${nome}', '${categoria}', this)" title="Sair">🏃‍♂️💨</button>`;
-            ul.appendChild(li);
-        }
-
-        const tbody = document.getElementById('tabela-stats-body');
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td class="nome-tabela">${nome}</td>
-            <td style="font-size: 10px; color: #777;">${categoria.substring(0,3)}</td>
-            <td><input type="number" class="ipt-gol" value="${gols}" min="0"></td>
-            <td><input type="number" class="ipt-ast" value="${assist}" min="0"></td>
-            <td><input type="number" class="ipt-def" value="${defesas}" min="0" ${categoria !== 'Goleiro' ? 'disabled style="background:#f9f9f9; border:none;"' : ''}></td>
-            <td><input type="number" class="ipt-vit" value="${vit}" min="0"></td>
-            <td><input type="number" class="ipt-emp" value="${emp}" min="0"></td>
-            <td><input type="number" class="ipt-der" value="${der}" min="0"></td>
-        `;
-        tbody.appendChild(tr);
-    }
-
-    async function buscarDadosDaPlanilha() {
+    async function puxarDados() {
         document.getElementById('loading').style.display = 'block';
         try {
-            const response = await fetch(scriptURL);
-            const dados = await response.json();
-            dados.forEach(linha => { if(linha[1] && linha[2]) adicionarNaTela(linha[1], linha[2], linha[4]||0, linha[5]||0, linha[6]||0, linha[7]||0, linha[8]||0, linha[9]||0); });
-        } catch (e) {}
+            const res = await fetch(scriptURL);
+            jogadoresPlanilha = await res.json();
+            montarSelect();
+            renderizarListas();
+        } catch (e) { console.error("Erro ao puxar dados", e); }
         document.getElementById('loading').style.display = 'none';
     }
 
-    function confirmarPresenca() {
-        const selectNome = document.getElementById('selectNomeJogador');
-        const inputExtra = document.getElementById('nomeJogadorExtra');
-        const tipoSelect = document.getElementById('tipoJogador');
+    function montarSelect() {
+        const select = document.getElementById('selectNomes');
+        select.innerHTML = '<option value="">👤 SELECIONE SEU NOME...</option>';
+
+        // Extrai convidados cadastrados na planilha
+        const convidados = jogadoresPlanilha.map(j => ({ nome: j[1], tipo: j[2] }));
+        
+        // Une fixos + convidados, remove duplicatas e ordena A-Z
+        const todos = [...mensalistasFixo, ...convidados];
+        const unicoAZ = todos.filter((v, i, a) => a.findIndex(t => t.nome === v.nome) === i)
+                             .sort((a, b) => a.nome.localeCompare(b.nome));
+
+        unicoAZ.forEach(j => {
+            const opt = document.createElement('option');
+            opt.value = j.nome;
+            opt.text = j.nome;
+            opt.dataset.tipo = j.tipo;
+            select.appendChild(opt);
+        });
+    }
+
+    async function cadastrarNaPlataforma() {
+        const nome = document.getElementById('cadNome').value.trim().toUpperCase();
+        const tipo = document.getElementById('cadTipo').value;
+        if(!nome) return alert("Digite o nome!");
+
+        const btn = document.querySelector('.btn-cadastrar');
+        btn.innerText = "GRAVANDO..."; btn.disabled = true;
+
+        const fd = new URLSearchParams();
+        fd.append('acao', 'cadastrar_novo');
+        fd.append('nome', nome);
+        fd.append('categoria', tipo);
+
+        await fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd });
+        alert("Nome cadastrado! Agora selecione-o abaixo para confirmar no jogo.");
+        location.reload();
+    }
+
+    async function confirmarNoJogo() {
+        const sel = document.getElementById('selectNomes');
+        const nome = sel.value;
+        const tipo = sel.options[sel.selectedIndex].dataset.tipo;
+        if(!nome) return alert("Selecione um nome!");
+
         const btn = document.getElementById('btnConfirmar');
-        let nome = (selectNome.value === 'OUTRO') ? inputExtra.value.trim() : selectNome.value;
-        const categoria = tipoSelect.value;
-        if (!nome) { alert('Quem é você? Selecione o nome!'); return; }
-        if (categoria === 'Mensalista' && totalMensalistas >= 18) { alert('Vagas de mensalistas esgotadas!'); return; }
-        btn.innerHTML = '⏳...'; btn.disabled = true;
-        const formData = new URLSearchParams(); formData.append('nome', nome); formData.append('categoria', categoria);
-        fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData }).then(() => {
-            adicionarNaTela(nome, categoria);
-            selectNome.value = ''; inputExtra.value = ''; inputExtra.style.display = 'none';
-            btn.innerHTML = '✅ CONFIRMAR PRESENÇA'; btn.disabled = false;
-        });
+        btn.innerText = "CONFIRMANDO..."; btn.disabled = true;
+
+        const fd = new URLSearchParams();
+        fd.append('acao', 'confirmar_presenca');
+        fd.append('nome', nome);
+        fd.append('categoria', tipo);
+
+        await fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd });
+        location.reload();
     }
 
-    function sairDaLista(nome, categoria, botao) {
-        if (confirm(`Sair da lista, ${nome}?`)) {
-            botao.innerHTML = '⏳';
-            const formData = new URLSearchParams(); formData.append('acao', 'remover_jogador'); formData.append('nome', nome);
-            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData }).then(() => { window.location.reload(); });
+    function renderizarListas() {
+        const listas = { 'Mensalista': 'l-mensalistas', 'Avulso': 'l-avulsos', 'Goleiro': 'l-goleiros' };
+        const cores = { 'Mensalista': 'bg-mensalista-item', 'Avulso': 'bg-avulso-item', 'Goleiro': 'bg-goleiro-item' };
+        
+        document.getElementById('l-mensalistas').innerHTML = "";
+        document.getElementById('l-avulsos').innerHTML = "";
+        document.getElementById('l-goleiros').innerHTML = "";
+        let mCount = 0;
+
+        jogadoresPlanilha.forEach(j => {
+            if (j[3] === "SIM") {
+                const li = document.createElement('li');
+                li.className = cores[j[2]];
+                li.innerHTML = `<span>${j[1]}</span> <button class="btn-sair" onclick="remover('${j[1]}')">🏃‍♂️</button>`;
+                document.getElementById(listas[j[2]]).appendChild(li);
+                
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td style="text-align:left"><b>${j[1]}</b></td>
+                    <td><input type="number" class="g" value="${j[4]}"></td>
+                    <td><input type="number" class="a" value="${j[5]}"></td>
+                    <td><input type="number" class="d" value="${j[6]}"></td>
+                    <td><input type="number" class="v" value="${j[7]}"></td>`;
+                document.getElementById('tabela-stats-body').appendChild(tr);
+
+                if(j[2] === 'Mensalista') mCount++;
+            }
+        });
+        document.getElementById('cont-m').innerText = `${mCount}/18`;
+    }
+
+    function remover(nome) {
+        if(confirm("Sair da lista?")) {
+            const fd = new URLSearchParams(); fd.append('acao', 'remover_jogador'); fd.append('nome', nome);
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd }).then(() => location.reload());
         }
-    }
-
-    function salvarEstatisticas() {
-        const tentativa = prompt("🔐 Digite a senha da DIRETORIA para salvar:");
-        if (tentativa !== SENHA_ADMIN) { alert("Senha incorreta!"); return; }
-
-        const btn = document.getElementById('btnSalvarStats');
-        btn.innerHTML = '⏳ SALVANDO...'; btn.disabled = true;
-        const linhas = document.querySelectorAll('#tabela-stats-body tr');
-        let statsArray = [];
-        linhas.forEach(tr => {
-            statsArray.push({
-                nome: tr.querySelector('.nome-tabela').innerText,
-                gols: tr.querySelector('.ipt-gol').value || 0,
-                assist: tr.querySelector('.ipt-ast').value || 0,
-                defesas: tr.querySelector('.ipt-def').value || 0,
-                vitorias: tr.querySelector('.ipt-vit').value || 0,
-                empates: tr.querySelector('.ipt-emp').value || 0,
-                derrotas: tr.querySelector('.ipt-der').value || 0
-            });
-        });
-        const formData = new URLSearchParams(); formData.append('acao', 'salvar_stats'); formData.append('stats', JSON.stringify(statsArray));
-        fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData }).then(() => { alert('Estatísticas Salvas!'); btn.innerHTML = '💾 SALVAR MINHAS ESTATÍSTICAS (RESTRITO)'; btn.disabled = false; });
     }
 
     function limparListaCompleta() {
-        const tentativa = prompt("🔐 Digite a senha da DIRETORIA para ZERAR a lista:");
-        if (tentativa !== SENHA_ADMIN) { alert("Senha incorreta!"); return; }
-
-        if (confirm("Isso apagará todos os confirmados. Confirmar?")) {
-            const formData = new URLSearchParams(); formData.append('acao', 'limpar');
-            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData }).then(() => { window.location.reload(); });
+        if(prompt("Senha:") === SENHA_ADMIN) {
+            const fd = new URLSearchParams(); fd.append('acao', 'limpar');
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd }).then(() => location.reload());
         }
+    }
+
+    function atualizarData() {
+        const h = new Date();
+        const d = (4 - h.getDay() + 7) % 7 || 7;
+        h.setDate(h.getDate() + d);
+        document.getElementById('data-jogo').innerText = h.toLocaleDateString('pt-BR');
+    }
+
+    function salvarEstatisticas() {
+        if(prompt("Senha Admin:") !== SENHA_ADMIN) return;
+        const stats = [];
+        document.querySelectorAll('#tabela-stats-body tr').forEach(tr => {
+            stats.push({
+                nome: tr.cells[0].innerText,
+                gols: tr.querySelector('.g').value,
+                assist: tr.querySelector('.a').value,
+                defesas: tr.querySelector('.d').value,
+                vitorias: tr.querySelector('.v').value,
+                empates: 0, derrotas: 0
+            });
+        });
+        const fd = new URLSearchParams(); fd.append('acao', 'salvar_stats'); fd.append('stats', JSON.stringify(stats));
+        fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd }).then(() => alert("Salvo!"));
     }
 </script>
 </body>
