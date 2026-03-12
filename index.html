@@ -37,7 +37,18 @@
         .regras-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; font-size: 13px; text-align: center; }
 
         .box { background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        h3 { font-family: 'Kanit'; text-transform: uppercase; color: var(--deep-navy); border-bottom: 2px solid #eee; padding-bottom: 8px; margin-top: 0; }
+        
+        /* AJUSTE SOLICITADO: Títulos Centralizados e Fonte Maior */
+        h3 { 
+            font-family: 'Kanit'; 
+            text-transform: uppercase; 
+            color: var(--deep-navy); 
+            border-bottom: 2px solid #eee; 
+            padding-bottom: 10px; 
+            margin-top: 0;
+            text-align: center; /* Centraliza */
+            font-size: 22px;    /* Aumenta a fonte */
+        }
 
         .flex-row { display: flex; gap: 10px; flex-wrap: wrap; }
         input, select { padding: 14px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; font-size: 16px; box-sizing: border-box; }
@@ -69,7 +80,7 @@
 
 <div id="splash-screen">
     <img src="logo.png" alt="Logo" style="width:150px; border-radius:20px; margin-bottom:10px;">
-    <h1 style="font-family:'Kanit';">°BEM VINDO JOGADOR°</h1>
+    <h1 style="font-family:'Kanit';">BEM VINDO JOGADOR</h1>
     <div class="btn-play-blue" onclick="fecharSplash()">
         <div class="play-tri"></div>
     </div>
@@ -79,7 +90,7 @@
 <div class="header-banner">
     <img src="logo.png" alt="FUT 5ª" class="header-logo">
     <h1>FUT 5ª - RESENHA E FUTEBOL</h1>
-    <p class="data-jogo-subtitle">JOGO DA SEMANA: <span id="data-jogo">--/--/----</span></p>
+    <p class="data-jogo-subtitle">JOGO DA SEMANA: <span id="data-jogo">12/03/2026</span></p>
 </div>
 
 <div class="container">
@@ -118,7 +129,7 @@
             <div id="l-fixo"></div>
         </div>
         <div class="box" style="border-top: 4px solid var(--action-blue)">
-            <h3>🏃 LISTA DE ESPERA (AVULSOS)</h3>
+            <h3>🏃 LISTA DE ESPERA</h3>
             <div id="l-avulsos"></div>
         </div>
     </div>
@@ -147,6 +158,7 @@
 </div>
 
 <script>
+    // Mantenha sua URL de implantação aqui
     const scriptURL = 'https://script.google.com/macros/s/AKfycbz6ymzQN4QYjVXvralpjEH-CIIa4S-nbjYJ8AUWoSBSqp_izUE7y2jTnW9eibUh1E2Y5g/exec'; 
     const SENHA_ADMIN = '2016';
     const mensalistasFixo = ["FAYAD", "CABEÇA", "CKI", "DIGO", "OREIA", "VALDIR", "GERAGE", "PINHEIRO", "SAULO", "RICA", "LH", "LU AVERSA", "TREVILIN", "GUIMA", "BAMBI", "KÇA", "JOAO BARRIGA", "POLLI"];
@@ -221,7 +233,6 @@
     function gerarRanking(jogadores) {
         const container = document.getElementById('ranking-stats');
         container.innerHTML = "";
-        // Mapeamento das colunas da planilha: 4=Gols, 5=Assist, 7=Vitórias
         const categorias = [{ label: "⚽ GOLS", idx: 4 }, { label: "👟 ASSIST.", idx: 5 }, { label: "🏆 VITÓRIAS", idx: 7 }];
         categorias.forEach(cat => {
             const top = [...jogadores].sort((a, b) => (b[cat.idx] || 0) - (a[cat.idx] || 0)).slice(0, 3);
@@ -286,11 +297,8 @@
     }
 
     window.onload = () => { 
-        const d = new Date(); d.setDate(d.getDate() + ((4 - d.getDay() + 7) % 7));
-        document.getElementById('data-jogo').innerText = d.toLocaleDateString('pt-BR');
         carregar(); 
     };
 </script>
 </body>
-
 </html>
