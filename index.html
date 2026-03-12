@@ -42,11 +42,17 @@
         .item-jogador { display: flex; justify-content: space-between; align-items: center; padding: 12px; margin-bottom: 8px; border-radius: 6px; border: 1px solid #ddd; font-weight: 600; }
         .badge { font-size: 10px; padding: 3px 7px; border-radius: 4px; background: rgba(0,0,0,0.1); }
 
-        .tabela-container { overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; }
-        th { background: var(--deep-navy); color: white; padding: 12px; font-size: 11px; }
-        td { padding: 8px; text-align: center; border-bottom: 1px solid #eee; }
-        td input { width: 50px; text-align: center; padding: 5px; }
+        /* Estilos do Ranking TOP 3 */
+        .ranking-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 5px; }
+        .rank-card { background: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 5px solid var(--metallic-gold); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .rank-item { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; border-bottom: 1px dashed #ddd; padding-bottom: 2px; }
+
+        /* Tabela Scout Otimizada */
+        .tabela-container { width: 100%; overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th { background: var(--deep-navy); color: white; padding: 8px 2px; font-size: 10px; }
+        td { padding: 8px 2px; text-align: center; border-bottom: 1px solid #eee; }
+        td input { width: 38px; text-align: center; padding: 5px 2px; font-size: 14px; }
         td input:disabled { background: #f5f5f5; color: #ccc; }
 
         .loading-overlay { display: none; text-align: center; padding: 10px; font-weight: bold; }
@@ -101,6 +107,12 @@
             <h3>🏃 AVULSOS</h3>
             <div id="l-avulsos"></div>
         </div>
+    </div>
+
+    <div class="box">
+        <h3>🏆 TOP 3 DA RODADA</h3>
+        <div id="ranking-stats" class="ranking-container">
+            </div>
     </div>
 
     <div class="box">
@@ -166,7 +178,6 @@
             }
         });
 
-        // REGRA DE QUARTA-FEIRA: 14 JOGADORES DE LINHA (IGNORA GOLEIROS NA CONTAGEM DOS 14)
         const hoje = new Date();
         const diaSemana = hoje.getDay(); 
         if (diaSemana >= 3 && confirmadosMensalista.length < 14) {
@@ -175,17 +186,15 @@
             confirmadosMensalista = confirmadosMensalista.concat(promovidos);
         }
 
-        // --- CORREÇÃO DO CONTADOR ---
-        // Esta linha garante que o texto do título seja atualizado com os números corretos
         document.getElementById('titulo-elenco').innerText = `👑 ELENCO FIXO (${confirmadosMensalista.length}/14 LINHA | ${confirmadosGoleiro.length}/2 GOL.)`;
 
-        // Renderizar Listas
         confirmadosMensalista.forEach(j => renderizarItem(j, 'l-fixo'));
         confirmadosGoleiro.forEach(j => renderizarItem(j, 'l-fixo'));
         confirmadosAvulso.forEach(j => renderizarItem(j, 'l-avulsos'));
 
         // Renderizar Scouts
-        dados.filter(j => j[3] === "SIM").forEach(j => {
+        const confirmadosParaScout = dados.filter(j => j[3] === "SIM");
+        confirmadosParaScout.forEach(j => {
             const isG = j[2] === 'Goleiro';
             document.getElementById('tabela-body').innerHTML += `<tr>
                 <td style="text-align:left"><b>${j[1]}</b></td>
@@ -196,7 +205,37 @@
             </tr>`;
         });
 
+        // GERAR RANKING
+        gerarRanking(confirmadosParaScout);
+
         document.getElementById('loading').style.display = 'none';
+    }
+
+    function gerarRanking(jogadores) {
+        const container = document.getElementById('ranking-stats');
+        container.innerHTML = "";
+        
+        const categorias = [
+            { label: "⚽ GOLS", idx: 4 },
+            { label: "👟 ASSIST.", idx: 5 },
+            { label: "🏆 VITÓRIAS", idx: 7 }
+        ];
+
+        categorias.forEach(cat => {
+            const top = [...jogadores]
+                .sort((a, b) => (b[cat.idx] || 0) - (a[cat.idx] || 0))
+                .slice(0, 3);
+
+            let html = `<div class="rank-card"><b>${cat.label}</b><hr style="border:0; border-top:1px solid #eee; margin:10px 0;">`;
+            top.forEach((j, i) => {
+                const medal = i === 0 ? "🥇" : (i === 1 ? "🥈" : "🥉");
+                const valor = j[cat.idx] || 0;
+                if(valor > 0) {
+                    html += `<div class="rank-item"><span>${medal} ${j[1]}</span> <b>${valor}</b></div>`;
+                }
+            });
+            container.innerHTML += html + `</div>`;
+        });
     }
 
     function renderizarItem(j, containerId) {
@@ -254,6 +293,7 @@
         const fd = new URLSearchParams(); fd.append('acao', 'salvar_stats'); fd.append('stats', JSON.stringify(stats));
         await fetch(scriptURL, {method:'POST', mode:'no-cors', body: fd});
         alert("Scouts atualizados com sucesso!");
+        carregar(); // Recarregar para atualizar o ranking na tela
     }
 
     function limpar() {
