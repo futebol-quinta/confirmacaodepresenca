@@ -8,286 +8,268 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --deep-navy: #102a43; --deep-navy-light: #243b53;
-            --metallic-gold: #c5a059;
-            --warning-red: #d32f2f;
+            --deep-navy: #102a43; --metallic-gold: #c5a059; --warning-red: #d32f2f;
+            --fundo: #f0f2f5; --bg-mensalista: #d4edda; --bg-avulso: #d1ecf1; --bg-goleiro: #ffe5d0;
             --action-blue: #1976d2;
-            --text-dark: #1e1e1e; --text-light: #fefefe;
-            --fundo: #f0f2f5; --sober-gray-blue: #bcccdc;
-            --bg-mensalista: #d4edda; --bg-avulso: #d1ecf1; --bg-goleiro: #ffe5d0;
         }
-
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--fundo); color: var(--text-dark); margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
-
-        .header-banner { width: 100%; background-color: var(--deep-navy); padding: 25px 0; text-align: center; border-bottom: 5px solid var(--metallic-gold); margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
-        .header-logo { max-width: 140px; border-radius: 15px; margin-bottom: 10px; }
-        .banner-title-wrapper h1 { font-family: 'Kanit', sans-serif; color: var(--text-light); text-transform: uppercase; margin: 0; font-size: 2.2em; }
-        .data-jogo-subtitle { color: var(--metallic-gold); font-weight: bold; font-size: 1.1em; margin-top: 5px; }
-
-        .container { max-width: 1000px; width: 90%; margin-bottom: 40px; }
-
-        /* NOVA SEÇÃO DE CADASTRO */
-        .box-cadastro { background: white; padding: 20px; border-radius: 12px; border: 2px dashed var(--sober-gray-blue); margin-bottom: 20px; text-align: center; }
-        .box-cadastro h3 { margin-top: 0; color: var(--deep-navy); font-family: 'Kanit'; font-size: 1.1em; text-transform: uppercase; }
-        .inputs-cadastro { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
-        .inputs-cadastro input, .inputs-cadastro select { padding: 12px; border: 1px solid #ccc; border-radius: 6px; }
-        .btn-cadastrar { background-color: var(--deep-navy-light); color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
-        .btn-cadastrar:hover { background-color: var(--metallic-gold); }
-
-        /* FORMULÁRIO DE PRESENÇA */
-        .form-presenca { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; background: var(--sober-gray-blue); padding: 25px; border-radius: 12px; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .form-presenca select { padding: 12px; border: 2px solid #aabacb; border-radius: 6px; flex: 2; min-width: 200px; font-size: 16px; background-color: white; font-family: 'Montserrat', sans-serif; }
-        .form-presenca button { background-color: #2e7d32; color: white; border: none; padding: 14px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; text-transform: uppercase; flex: 1; }
-
-        #loading { display: none; text-align: center; color: var(--deep-navy); font-weight: bold; margin-bottom: 20px; }
-
-        .listas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
-        .lista-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-top: 4px solid var(--deep-navy); }
-        .lista-card h3 { margin-top: 0; color: var(--deep-navy-light); font-family: 'Kanit', sans-serif; text-transform: uppercase; font-size: 1.2em; border-bottom: 2px solid #eee; padding-bottom: 12px; display: flex; justify-content: space-between; }
-        .lista-card ol { padding-left: 20px; margin: 0; }
-        .lista-card li { margin-bottom: 10px; padding: 10px; border-radius: 6px; font-weight: 600; border: 1px solid #d1d1d1; display: flex; justify-content: space-between; align-items: center;}
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--fundo); margin: 0; padding-bottom: 50px; display: flex; flex-direction: column; align-items: center; }
         
-        .bg-mensalista-item { background-color: var(--bg-mensalista); }
-        .bg-avulso-item { background-color: var(--bg-avulso); }
-        .bg-goleiro-item { background-color: var(--bg-goleiro); }
+        .header-banner { width: 100%; background-color: var(--deep-navy); padding: 25px 0; text-align: center; border-bottom: 5px solid var(--metallic-gold); color: white; margin-bottom: 20px; }
+        .header-logo { max-width: 120px; border-radius: 15px; margin-bottom: 10px; }
+        .data-jogo-subtitle { color: var(--metallic-gold); font-weight: bold; }
 
-        .btn-sair { background: none; border: none; cursor: pointer; font-size: 18px; }
+        .container { width: 92%; max-width: 1000px; }
 
-        .tabela-container { overflow-x: auto; margin-bottom: 20px;}
-        table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; }
-        th { background-color: var(--deep-navy); color: white; padding: 12px; font-size: 12px; text-transform: uppercase; }
-        td { padding: 10px; text-align: center; border-bottom: 1px solid #f0f0f0; }
+        .card-regras { background: #fffaf0; border: 2px solid var(--metallic-gold); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .regras-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; font-size: 13px; text-align: center; }
+
+        .box { background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        h3 { font-family: 'Kanit'; text-transform: uppercase; color: var(--deep-navy); border-bottom: 2px solid #eee; padding-bottom: 8px; margin-top: 0; }
+
+        .flex-row { display: flex; gap: 10px; flex-wrap: wrap; }
+        input, select { padding: 14px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; font-size: 16px; box-sizing: border-box; }
+        
+        .form-confirmacao { display: flex; flex-direction: column; gap: 10px; }
+        .form-confirmacao select, .form-confirmacao button { width: 100%; }
+
+        .btn { padding: 16px 25px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .btn-confirmar { background: #2e7d32; color: white; }
+        .btn-cadastrar { background: var(--deep-navy); color: white; }
+        
+        .btn-salvar { background: var(--action-blue); color: white; width: 100%; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+        .grid-listas { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .item-jogador { display: flex; justify-content: space-between; align-items: center; padding: 12px; margin-bottom: 8px; border-radius: 6px; border: 1px solid #ddd; font-weight: 600; }
+        .badge { font-size: 10px; padding: 3px 7px; border-radius: 4px; background: rgba(0,0,0,0.1); }
+
+        .tabela-container { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: var(--deep-navy); color: white; padding: 12px; font-size: 11px; }
+        td { padding: 8px; text-align: center; border-bottom: 1px solid #eee; }
         td input { width: 50px; text-align: center; padding: 5px; }
+        td input:disabled { background: #f5f5f5; color: #ccc; }
 
-        .area-admin { background: #fff4f4; padding: 25px; border-radius: 12px; border: 2px solid #facbca; text-align: center; margin-top: 20px; }
-        .btn-perigo { background-color: var(--warning-red); color: white; border: none; padding: 14px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; text-transform: uppercase; }
+        .loading-overlay { display: none; text-align: center; padding: 10px; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="header-banner">
-    <img src="logo.png" alt="Logo" class="header-logo">
-    <div class="banner-title-wrapper"><h1>FUT 5ª - RESENHA E FUTEBOL</h1></div>
+    <img src="logo.png" alt="FUT 5ª" class="header-logo">
+    <h1>FUT 5ª - RESENHA E FUTEBOL</h1>
     <p class="data-jogo-subtitle">JOGO DA SEMANA: <span id="data-jogo">--/--/----</span></p>
 </div>
 
 <div class="container">
+    <div class="card-regras">
+        <h3>📋 REGRAS E AVISOS</h3>
+        <div class="regras-grid">
+            <div>🕒 <b>HORÁRIO</b><br>19H às 20H</div>
+            <div>💰 <b>MENSAL</b><br>R$ 60,00</div>
+            <div>🏃 <b>AVULSO</b><br>R$ 20,00</div>
+            <div>📍 <b>PIX</b><br>matheuszampieri14@hotmail.com</div>
+        </div>
+    </div>
 
-    <div class="box-cadastro">
-        <h3>✨ NOVO CONVIDADO? CADASTRE SEU NOME</h3>
-        <p style="font-size: 12px; color: #666; margin-top: 0;">Cadastre-se uma vez para aparecer na lista de seleção abaixo.</p>
-        <div class="inputs-cadastro">
-            <input type="text" id="cadNome" placeholder="Nome Completo">
-            <select id="cadTipo">
+    <div class="box">
+        <h3>✨ NOVO CONVIDADO</h3>
+        <div class="flex-row">
+            <input type="text" id="cadNome" placeholder="Nome Completo" style="flex:2">
+            <select id="cadTipo" style="flex:1">
                 <option value="Avulso">🏃 Avulso</option>
                 <option value="Goleiro">🧤 Goleiro</option>
             </select>
-            <button class="btn-cadastrar" onclick="cadastrarNaPlataforma()">GRAVAR NOME</button>
+            <button class="btn btn-cadastrar" onclick="cadastrar()">GRAVAR</button>
         </div>
     </div>
 
-    <div class="form-presenca">
-        <select id="selectNomes">
-            <option value="">🔄 Carregando elenco...</option>
-        </select>
-        <button id="btnConfirmar" onclick="confirmarNoJogo()">✅ CONFIRMAR PRESENÇA NO JOGO</button>
+    <div class="box">
+        <h3>✅ CONFIRMAR PRESENÇA</h3>
+        <div class="form-confirmacao">
+            <select id="selectNomes"><option value="">Carregando elenco...</option></select>
+            <button id="btnConf" class="btn btn-confirmar" onclick="confirmar()">CONFIRMAR PRESENÇA NO JOGO</button>
+        </div>
+        <div id="loading" class="loading-overlay">Sincronizando...</div>
     </div>
 
-    <div id="loading">🔄 Sincronizando dados...</div>
-
-    <div class="listas-grid">
-        <div class="lista-card">
-            <h3>👑 MENSALISTAS <span style="font-size: 0.7em;" id="cont-m">0/18</span></h3>
-            <ol id="l-mensalistas"></ol>
+    <div class="grid-listas">
+        <div class="box" style="border-top: 4px solid #2e7d32">
+            <h3 id="titulo-elenco">👑 ELENCO FIXO (MENS./GOL.)</h3>
+            <div id="l-fixo"></div>
         </div>
-        <div class="lista-card">
+        <div class="box" style="border-top: 4px solid var(--action-blue)">
             <h3>🏃 AVULSOS</h3>
-            <ol id="l-avulsos"></ol>
-        </div>
-        <div class="lista-card">
-            <h3>🧤 GOLEIROS</h3>
-            <ol id="l-goleiros"></ol>
+            <div id="l-avulsos"></div>
         </div>
     </div>
 
-    <h2 style="font-family: 'Kanit'; text-transform: uppercase; font-size: 1.2em; color: var(--deep-navy);">📊 SCOUT DA RODADA</h2>
-    <div class="tabela-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>JOGADOR</th>
-                    <th>GOLS</th>
-                    <th>AST.</th>
-                    <th>DEF.</th>
-                    <th>VIT.</th>
-                </tr>
-            </thead>
-            <tbody id="tabela-stats-body"></tbody>
-        </table>
+    <div class="box">
+        <h3>📊 SCOUT DA RODADA</h3>
+        <div class="tabela-container">
+            <table>
+                <thead>
+                    <tr><th style="text-align:left">JOGADOR</th><th>GOLS</th><th>AST.</th><th>DEF.</th><th>VIT.</th></tr>
+                </thead>
+                <tbody id="tabela-body"></tbody>
+            </table>
+        </div>
+        <button class="btn btn-salvar" onclick="salvarStats()">
+            <span>💾</span> SALVAR ESTATÍSTICAS DA RODADA
+        </button>
     </div>
-    <button style="width:100%; padding:15px; margin-top:10px; background:var(--action-blue); color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="salvarEstatisticas()">💾 SALVAR ESTATÍSTICAS (RESTRITO)</button>
 
-    <div class="area-admin">
-        <h3 style="color: var(--warning-red); margin-top:0;">⚙️ DIRETORIA</h3>
-        <button class="btn-perigo" onclick="limparListaCompleta()">🗑️ ZERAR LISTA DA SEMANA</button>
+    <div style="text-align:center; margin-top: 30px;">
+        <button style="background:none; border:1px solid #ccc; color:#999; padding:8px 20px; border-radius:20px; cursor:pointer" onclick="limpar()">Zerar Lista da Semana (Restrito)</button>
     </div>
 </div>
 
 <script>
-    // --- INSIRA SEU LINK DO GOOGLE SCRIPT AQUI ---
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwFHkHRP3w-no42PGPNI-1HQ51bZjw3g2BlC0uRmqDnYswGmgOCk1pFLJTq1zlaRl3L5Q/exec'; 
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz6ymzQN4QYjVXvralpjEH-CIIa4S-nbjYJ8AUWoSBSqp_izUE7y2jTnW9eibUh1E2Y5g/exec'; 
     const SENHA_ADMIN = '2016';
+    const mensalistasFixo = ["FAYAD", "CABEÇA", "CKI", "DIGO", "OREIA", "VALDIR", "GERAGE", "PINHEIRO", "SAULO", "RICA", "LH", "LU AVERSA", "TREVILIN", "GUIMA", "BAMBI", "KÇA", "JOAO BARRIGA", "POLLI"];
+    let confirmadosNomes = [];
+    let contagemGoleiros = 0;
 
-    // MENSALISTAS FIXOS (ESTES SEMPRE APARECEM NO SELECT)
-    const mensalistasFixo = [
-        "FAYAD", "CABEÇA", "CKI", "DIGO", "OREIA", "VALDIR", "GERAGE", "WILLIAN", 
-        "SAULO", "RICA (BACCARIN)", "LH", "LUCIANO", "TREVELIN", "GUIMA", 
-        "BAMBI", "KÇA", "JOAO BARRIGA", "POLLI", "TERRINI"
-    ].map(n => ({ nome: n, tipo: 'Mensalista' }));
-
-    let jogadoresPlanilha = [];
-
-    window.onload = () => {
-        atualizarData();
-        puxarDados();
-    };
-
-    async function puxarDados() {
+    async function carregar() {
         document.getElementById('loading').style.display = 'block';
-        try {
-            const res = await fetch(scriptURL);
-            jogadoresPlanilha = await res.json();
-            montarSelect();
-            renderizarListas();
-        } catch (e) { console.error("Erro ao puxar dados", e); }
+        const res = await fetch(scriptURL);
+        const dados = await res.json();
+        
+        confirmadosNomes = dados.filter(j => j[3] === "SIM").map(j => j[1].toUpperCase());
+        contagemGoleiros = dados.filter(j => j[3] === "SIM" && j[2] === "Goleiro").length;
+
+        const sel = document.getElementById('selectNomes');
+        const convidados = dados.map(j => ({n: j[1].toUpperCase(), t: j[2]}));
+        const todos = mensalistasFixo.map(n => ({n: n.toUpperCase(), t: 'Mensalista'})).concat(convidados);
+        const unicos = todos.filter((v,i,a) => a.findIndex(t=>(t.n === v.n))===i).sort((a,b)=>a.n.localeCompare(b.n));
+
+        sel.innerHTML = '<option value="">👤 SELECIONE SEU NOME...</option>';
+        unicos.forEach(j => {
+            let o = document.createElement('option');
+            o.value = j.n; o.text = j.n; o.dataset.tipo = j.t;
+            sel.appendChild(o);
+        });
+
+        document.getElementById('l-fixo').innerHTML = ""; 
+        document.getElementById('l-avulsos').innerHTML = ""; 
+        document.getElementById('tabela-body').innerHTML = "";
+
+        let confirmadosMensalista = [];
+        let confirmadosGoleiro = [];
+        let confirmadosAvulso = [];
+
+        dados.forEach(j => {
+            if (j[3] === "SIM") {
+                if(j[2] === 'Mensalista') confirmadosMensalista.push(j);
+                else if(j[2] === 'Goleiro') confirmadosGoleiro.push(j);
+                else confirmadosAvulso.push(j);
+            }
+        });
+
+        // REGRA DE QUARTA-FEIRA: 14 JOGADORES DE LINHA (IGNORA GOLEIROS NA CONTAGEM DOS 14)
+        const hoje = new Date();
+        const diaSemana = hoje.getDay(); 
+        if (diaSemana >= 3 && confirmadosMensalista.length < 14) {
+            const vagasRestantes = 14 - confirmadosMensalista.length;
+            const promovidos = confirmadosAvulso.splice(0, vagasRestantes);
+            confirmadosMensalista = confirmadosMensalista.concat(promovidos);
+        }
+
+        // --- CORREÇÃO DO CONTADOR ---
+        // Esta linha garante que o texto do título seja atualizado com os números corretos
+        document.getElementById('titulo-elenco').innerText = `👑 ELENCO FIXO (${confirmadosMensalista.length}/14 LINHA | ${confirmadosGoleiro.length}/2 GOL.)`;
+
+        // Renderizar Listas
+        confirmadosMensalista.forEach(j => renderizarItem(j, 'l-fixo'));
+        confirmadosGoleiro.forEach(j => renderizarItem(j, 'l-fixo'));
+        confirmadosAvulso.forEach(j => renderizarItem(j, 'l-avulsos'));
+
+        // Renderizar Scouts
+        dados.filter(j => j[3] === "SIM").forEach(j => {
+            const isG = j[2] === 'Goleiro';
+            document.getElementById('tabela-body').innerHTML += `<tr>
+                <td style="text-align:left"><b>${j[1]}</b></td>
+                <td><input type="number" class="sc-g" value="${j[4]||0}" ${isG?'disabled':''}></td>
+                <td><input type="number" class="sc-a" value="${j[5]||0}" ${isG?'disabled':''}></td>
+                <td><input type="number" class="sc-d" value="${j[6]||0}" ${!isG?'disabled':''}></td>
+                <td><input type="number" class="sc-v" value="${j[7]||0}"></td>
+            </tr>`;
+        });
+
         document.getElementById('loading').style.display = 'none';
     }
 
-    function montarSelect() {
-        const select = document.getElementById('selectNomes');
-        select.innerHTML = '<option value="">👤 SELECIONE SEU NOME...</option>';
-
-        // Extrai convidados cadastrados na planilha
-        const convidados = jogadoresPlanilha.map(j => ({ nome: j[1], tipo: j[2] }));
-        
-        // Une fixos + convidados, remove duplicatas e ordena A-Z
-        const todos = [...mensalistasFixo, ...convidados];
-        const unicoAZ = todos.filter((v, i, a) => a.findIndex(t => t.nome === v.nome) === i)
-                             .sort((a, b) => a.nome.localeCompare(b.nome));
-
-        unicoAZ.forEach(j => {
-            const opt = document.createElement('option');
-            opt.value = j.nome;
-            opt.text = j.nome;
-            opt.dataset.tipo = j.tipo;
-            select.appendChild(opt);
-        });
+    function renderizarItem(j, containerId) {
+        const tipo = j[2];
+        const cor = tipo === 'Mensalista' ? 'var(--bg-mensalista)' : (tipo === 'Goleiro' ? 'var(--bg-goleiro)' : 'var(--bg-avulso)');
+        const item = `<div class="item-jogador" style="background:${cor}"><span>${j[1]} <span class="badge">${tipo}</span></span><button style="background:none; border:none; cursor:pointer;" onclick="remover('${j[1]}')">🏃‍♂️</button></div>`;
+        document.getElementById(containerId).innerHTML += item;
     }
 
-    async function cadastrarNaPlataforma() {
-        const nome = document.getElementById('cadNome').value.trim().toUpperCase();
-        const tipo = document.getElementById('cadTipo').value;
-        if(!nome) return alert("Digite o nome!");
+    async function cadastrar() {
+        const n = document.getElementById('cadNome').value.trim().toUpperCase();
+        if(!n) return alert("Digite o nome!");
+        await fetch(scriptURL + `?acao=cadastrar_novo&nome=${n}&categoria=${document.getElementById('cadTipo').value}`, {method:'POST', mode:'no-cors'});
+        location.reload();
+    }
 
-        const btn = document.querySelector('.btn-cadastrar');
+    async function confirmar() {
+        const s = document.getElementById('selectNomes');
+        if(!s.value) return alert("Selecione o nome!");
+        const tipo = s.options[s.selectedIndex].dataset.tipo;
+
+        if(confirmadosNomes.includes(s.value.toUpperCase())) {
+            return alert("⚠️ JOGADOR JÁ CONFIRMADO NA LISTA!");
+        }
+
+        if(tipo === "Goleiro" && contagemGoleiros >= 2) {
+            return alert("⚠️ LIMITE DE 2 GOLEIROS ATINGIDO!");
+        }
+
+        const btn = document.getElementById('btnConf');
         btn.innerText = "GRAVANDO..."; btn.disabled = true;
-
-        const fd = new URLSearchParams();
-        fd.append('acao', 'cadastrar_novo');
-        fd.append('nome', nome);
-        fd.append('categoria', tipo);
-
-        await fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd });
-        alert("Nome cadastrado! Agora selecione-o abaixo para confirmar no jogo.");
-        location.reload();
+        await fetch(scriptURL + `?acao=confirmar_presenca&nome=${s.value}&categoria=${tipo}`, {method:'POST', mode:'no-cors'});
+        await carregar();
+        btn.innerText = "CONFIRMAR PRESENÇA NO JOGO"; btn.disabled = false;
     }
 
-    async function confirmarNoJogo() {
-        const sel = document.getElementById('selectNomes');
-        const nome = sel.value;
-        const tipo = sel.options[sel.selectedIndex].dataset.tipo;
-        if(!nome) return alert("Selecione um nome!");
-
-        const btn = document.getElementById('btnConfirmar');
-        btn.innerText = "CONFIRMANDO..."; btn.disabled = true;
-
-        const fd = new URLSearchParams();
-        fd.append('acao', 'confirmar_presenca');
-        fd.append('nome', nome);
-        fd.append('categoria', tipo);
-
-        await fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd });
-        location.reload();
-    }
-
-    function renderizarListas() {
-        const listas = { 'Mensalista': 'l-mensalistas', 'Avulso': 'l-avulsos', 'Goleiro': 'l-goleiros' };
-        const cores = { 'Mensalista': 'bg-mensalista-item', 'Avulso': 'bg-avulso-item', 'Goleiro': 'bg-goleiro-item' };
-        
-        document.getElementById('l-mensalistas').innerHTML = "";
-        document.getElementById('l-avulsos').innerHTML = "";
-        document.getElementById('l-goleiros').innerHTML = "";
-        let mCount = 0;
-
-        jogadoresPlanilha.forEach(j => {
-            if (j[3] === "SIM") {
-                const li = document.createElement('li');
-                li.className = cores[j[2]];
-                li.innerHTML = `<span>${j[1]}</span> <button class="btn-sair" onclick="remover('${j[1]}')">🏃‍♂️</button>`;
-                document.getElementById(listas[j[2]]).appendChild(li);
-                
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td style="text-align:left"><b>${j[1]}</b></td>
-                    <td><input type="number" class="g" value="${j[4]}"></td>
-                    <td><input type="number" class="a" value="${j[5]}"></td>
-                    <td><input type="number" class="d" value="${j[6]}"></td>
-                    <td><input type="number" class="v" value="${j[7]}"></td>`;
-                document.getElementById('tabela-stats-body').appendChild(tr);
-
-                if(j[2] === 'Mensalista') mCount++;
-            }
-        });
-        document.getElementById('cont-m').innerText = `${mCount}/18`;
-    }
-
-    function remover(nome) {
+    async function remover(n) {
         if(confirm("Sair da lista?")) {
-            const fd = new URLSearchParams(); fd.append('acao', 'remover_jogador'); fd.append('nome', nome);
-            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd }).then(() => location.reload());
+            await fetch(scriptURL + `?acao=remover_jogador&nome=${n.toUpperCase()}`, {method:'POST', mode:'no-cors'});
+            carregar();
         }
     }
 
-    function limparListaCompleta() {
-        if(prompt("Senha:") === SENHA_ADMIN) {
-            const fd = new URLSearchParams(); fd.append('acao', 'limpar');
-            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd }).then(() => location.reload());
-        }
-    }
-
-    function atualizarData() {
-        const h = new Date();
-        const d = (4 - h.getDay() + 7) % 7 || 7;
-        h.setDate(h.getDate() + d);
-        document.getElementById('data-jogo').innerText = h.toLocaleDateString('pt-BR');
-    }
-
-    function salvarEstatisticas() {
-        if(prompt("Senha Admin:") !== SENHA_ADMIN) return;
+    async function salvarStats() {
         const stats = [];
-        document.querySelectorAll('#tabela-stats-body tr').forEach(tr => {
+        document.querySelectorAll('#tabela-body tr').forEach(tr => {
             stats.push({
                 nome: tr.cells[0].innerText,
-                gols: tr.querySelector('.g').value,
-                assist: tr.querySelector('.a').value,
-                defesas: tr.querySelector('.d').value,
-                vitorias: tr.querySelector('.v').value,
-                empates: 0, derrotas: 0
+                gols: tr.querySelector('.sc-g').value,
+                assist: tr.querySelector('.sc-a').value,
+                defesas: tr.querySelector('.sc-d').value,
+                vitorias: tr.querySelector('.sc-v').value
             });
         });
         const fd = new URLSearchParams(); fd.append('acao', 'salvar_stats'); fd.append('stats', JSON.stringify(stats));
-        fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd }).then(() => alert("Salvo!"));
+        await fetch(scriptURL, {method:'POST', mode:'no-cors', body: fd});
+        alert("Scouts atualizados com sucesso!");
     }
+
+    function limpar() {
+        if(prompt("Senha Admin:") === SENHA_ADMIN) {
+            fetch(scriptURL + `?acao=limpar`, {method:'POST', mode:'no-cors'}).then(() => location.reload());
+        }
+    }
+
+    function definirData() {
+        const h = new Date(); const d = new Date();
+        const diff = (4 - h.getDay() + 7) % 7;
+        d.setDate(h.getDate() + diff);
+        document.getElementById('data-jogo').innerText = d.toLocaleDateString('pt-BR');
+    }
+
+    window.onload = () => { definirData(); carregar(); };
 </script>
 </body>
-
 </html>
